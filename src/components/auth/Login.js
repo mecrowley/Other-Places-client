@@ -25,6 +25,7 @@ export const Login = () => {
                 if (res.token) {
                     localStorage.setItem("opuser", res.token)
                     localStorage.setItem("isAdmin", res.isAdmin)
+                    history.push("/")
                 } else {
                     window.alert("Username or password was not valid.")
                 }

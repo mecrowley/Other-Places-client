@@ -3,12 +3,14 @@ import { Route, Redirect } from "react-router-dom"
 import { ApplicationViews } from "./ApplicationViews"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
+import { NavBar } from "./navigation/NavBar"
 
 export const OtherPlaces = () => (
     <>
         <Route render={() => {
             if (localStorage.getItem("opuser")) {
                 return <>
+                    <NavBar/>
                     <ApplicationViews />
                 </>
             } else {
