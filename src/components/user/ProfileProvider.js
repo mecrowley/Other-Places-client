@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react"
 export const ProfileContext = createContext()
 
 export const ProfileProvider = (props) => {
-    const [profile, setProfile] = useState([])
+    const [profile, setProfile] = useState({user:{}})
 
     const getProfileById = id => {
         return fetch(`http://localhost:8000/userprofiles/${id}`,
@@ -25,7 +25,8 @@ export const ProfileProvider = (props) => {
         return fetch(`http://localhost:8000/userprofiles/${profile.id}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("opuser")}`
             },
             body: JSON.stringify(profile)
         })

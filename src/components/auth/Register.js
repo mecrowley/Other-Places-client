@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./Auth.css";
 
@@ -9,7 +9,22 @@ export const Register = (props) => {
     const username = useRef()
     const password = useRef()
     const verifyPassword = useRef()
+    const bio = useRef()
     const history = useHistory()
+    const [profileImage, setProfileImage] = useState({})
+
+    const getBase64 = (file, callback) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result));
+        reader.readAsDataURL(file);
+    }
+
+    const createProfileImageString = (event) => {
+        getBase64(event.target.files[0], (base64ImageString) => {
+            console.log("Base64 of file is", base64ImageString);
+            setProfileImage(base64ImageString)
+        });
+    }
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -21,6 +36,8 @@ export const Register = (props) => {
                 last_name: lastName.current.value,
                 email: email.current.value,
                 password: password.current.value,
+                bio: bio.current.value,
+                profile_pic: profileImage
             }
 
             fetch("http://localhost:8000/register", {
@@ -71,21 +88,21 @@ export const Register = (props) => {
                     />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="username"> Username </label>
-                    <input
-                        ref={username}
-                        type="text"
-                        name="username"
-                        className="form-control"
-                        required
-                    />
-                </fieldset>
-                <fieldset>
                     <label htmlFor="inputEmail"> Email address </label>
                     <input
                         ref={email}
                         type="email"
                         name="email"
+                        className="form-control"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="username"> Username </label>
+                    <input
+                        ref={username}
+                        type="text"
+                        name="username"
                         className="form-control"
                         required
                     />
@@ -109,6 +126,19 @@ export const Register = (props) => {
                         className="form-control"
                         required
                     />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="bio"> Tell us about yourself(optional): </label>
+                    <input
+                        ref={bio}
+                        type="text"
+                        name="bio"
+                        className="form-control"
+                    />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="profile_pic"> Upload a profile pic(optional): </label>
+                    <input type="file" id="profile_image" onChange={createProfileImageString} />
                 </fieldset>
                 <fieldset
                     style={{
