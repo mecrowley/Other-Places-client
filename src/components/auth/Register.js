@@ -34,14 +34,7 @@ export const Register = (props) => {
                 .then((res) => res.json())
                 .then((res) => {
                     if (res.token) {
-                        localStorage.setItem("opuser", res.token);
-                        return true;
-                    } else {
-                        return false;
-                    }
-                })
-                .then((success) => {
-                    if (success) {
+                        localStorage.setItem("opuser", res.token)
                         history.push("/")
                     } else {
                         window.alert("User already exists or could not be created.")

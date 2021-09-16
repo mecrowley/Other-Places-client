@@ -24,14 +24,7 @@ export const Login = () => {
             .then((res) => {
                 if (res.token) {
                     localStorage.setItem("opuser", res.token)
-                    return true
-                } else {
-                    return false
-                }
-            })
-            .then((success) => {
-                if (success) {
-                    history.push("/")
+                    localStorage.setItem("isAdmin", res.isAdmin)
                 } else {
                     window.alert("Username or password was not valid.")
                 }
