@@ -10,7 +10,6 @@ export const ProfileProvider = (props) => {
         { headers: { "Authorization": `Token ${localStorage.getItem("opuser")}`}}
         )
             .then(res => res.json())
-            .then(setProfile)
     }
 
     const getMyProfile = () => {
@@ -18,7 +17,6 @@ export const ProfileProvider = (props) => {
         { headers: { "Authorization": `Token ${localStorage.getItem("opuser")}`}}
         )
             .then(res => res.json())
-            .then(setProfile)
     }
 
     const updateProfile = profile => {
@@ -30,7 +28,6 @@ export const ProfileProvider = (props) => {
             },
             body: JSON.stringify(profile)
         })
-            .then(getMyProfile)
     }
 
 

@@ -1,3 +1,25 @@
+.profile-container {
+    border: solid black 1px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.profile {
+    border: solid black 1px;
+    margin: 1rem 0;
+    padding: 2rem;
+    width: 50%;
+    text-align: center;
+}
+
 .image {
     width: 12rem;
+}
+
+.date-joined {
+    text-align: left;
+}
+
+.bio {
+    text-align: left;
 }
