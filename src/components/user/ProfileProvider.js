@@ -30,10 +30,24 @@ export const ProfileProvider = (props) => {
         })
     }
 
+    const followUser = userId => {
+        return fetch(`http://localhost:8000/userprofiles/${userId}/follow`, {
+            method: "POST",
+            headers: { "Authorization": `Token ${localStorage.getItem("opuser")}`}
+        })
+    }
+
+    const unfollowUser = userId=> {
+        return fetch(`http://localhost:8000/userprofiles/${userId}/follow`, {
+            method: "DELETE",
+            headers: { "Authorization": `Token ${localStorage.getItem("opuser")}`}
+        })
+    }
+
 
     return (
         <ProfileContext.Provider value={{
-            profile, getProfileById, getMyProfile, updateProfile
+            profile, getProfileById, getMyProfile, updateProfile, followUser, unfollowUser
         }}>
             {props.children}
         </ProfileContext.Provider>

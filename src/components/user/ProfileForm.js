@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { ProfileContext } from "./ProfileProvider";
+import './Profile.css'
 
 export const ProfileForm = () => {
     const { opuserId } = useParams()
@@ -11,7 +12,13 @@ export const ProfileForm = () => {
 
     useEffect(() => {
         getProfileById(parseInt(opuserId))
-            .then(setProfile)
+            .then(profile => {
+                if (profile.isMe) {
+                    setProfile(profile)
+                } else {
+                    history.push("/profile")
+                }
+            })
     }, [])
 
     const handleControlledInputChange = (event) => {
@@ -39,6 +46,9 @@ export const ProfileForm = () => {
             profile.profile_pic = profileImage
         }
         updateProfile(profile)
+            .then(() => {
+                history.push("/profile")
+            })
     }
 
 
@@ -46,8 +56,15 @@ export const ProfileForm = () => {
         <main style={{ textAlign: "center" }}>
             <form className="form--login">
                 <h1 className="h3 mb-3 font-weight-normal">Edit your profile</h1>
+                {profileImage ?
+                <img className="image" src={profileImage} /> :
+                <img className="image" src={profile?.profile_pic} />}
                 <fieldset>
-                    <label htmlFor="bio"> Tell us about yourself(optional): </label>
+                    <label htmlFor="profile_pic"> Upload a new profile pic: </label>
+                    <input type="file" id="profile_image" onChange={createProfileImageString} />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="bio"> About me: </label>
                     <input
                         onChange={handleControlledInputChange}
                         type="text"
@@ -56,23 +73,12 @@ export const ProfileForm = () => {
                         className="form-control"
                     />
                 </fieldset>
-                <fieldset>
-                    <label htmlFor="profile_pic"> Upload a profile pic(optional): </label>
-                    <input type="file" id="profile_image" onChange={createProfileImageString} />
-                </fieldset>
-                <fieldset
-                    style={{
-                        textAlign: "center",
-                    }}
-                >
-                    <button className="btn btn-1 btn-sep icon-send" onClick={e => {
-                        e.preventDefault()
-                        handleUpdate()
-                        history.push("/profile")
-                    }}>
-                        Save Changes
-                    </button>
-                </fieldset>
+                <button className="btn btn-1 btn-sep icon-send" onClick={e => {
+                    e.preventDefault()
+                    handleUpdate()
+                }}>
+                    Save Changes
+                </button>
             </form>
         </main>
     );

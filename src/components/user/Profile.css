@@ -1,5 +1,4 @@
 .profile-container {
-    border: solid black 1px;
     display: flex;
     justify-content: space-around;
 }
@@ -13,7 +12,10 @@
 }
 
 .image {
-    width: 12rem;
+    object-fit: cover;
+    width: 14rem;
+    height: 14rem;
+    border-radius: 100%;
 }
 
 .date-joined {

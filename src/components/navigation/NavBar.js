@@ -9,9 +9,6 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/">Other Places</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/places">Explore</Link>
-            </li>
-            <li className="navbar__item">
                 <Link className="navbar__link" to="/myplaces">My Places</Link>
             </li>
             <li className="navbar__item">
