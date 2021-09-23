@@ -75,7 +75,7 @@ export const MyPlacesList = () => {
                             <div className="text"
                                 onClick={e => {
                                     e.preventDefault()
-                                    history.push(`/places/detail/${p.id}`)
+                                    history.push(`/place/detail/${p.id}`)
                                 }}>
                                 <h4 className="title">{p.title}</h4>
                                 <div className="place-location_list">{p.city}, {p.state}</div>

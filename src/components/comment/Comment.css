@@ -8,11 +8,11 @@
 
 .add-comment {
     /* border: solid black 1px; */
-    margin-left: 1rem;
+    margin: 0 0 1rem 1rem;
     /* width: 45rem; */
 }
 
-.input-field {
+.comment-text {
     width: 85%;
     height: 2rem;
     margin: 1rem 1rem 0 0;

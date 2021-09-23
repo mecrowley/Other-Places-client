@@ -8,6 +8,7 @@ import { PlaceList } from "./place/PlaceList"
 import { MyPlacesList } from "./place/MyPlacesList"
 import { PlaceDetail } from "./place/PlaceDetail"
 import { CommentProvider } from "./comment/CommentProvider"
+import { PlaceForm } from "./place/PlaceForm"
 
 export const ApplicationViews = () => {
     return (
@@ -30,6 +31,12 @@ export const ApplicationViews = () => {
                         </Route>
                         <Route exact path="/place/detail/:placeId(\d+)">
                             <PlaceDetail />
+                        </Route>
+                        <Route exact path="/place/addplace">
+                            <PlaceForm />
+                        </Route>
+                        <Route exact path="/place/edit/:placeId(\d+)">
+                            <PlaceForm />
                         </Route>
                         <Route exact path="/profile">
                             <Profile />

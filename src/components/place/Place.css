@@ -1,3 +1,15 @@
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.margin1 {
+  margin: 1rem;
+}
+
 .places {
   display: flex;
   flex-wrap: wrap;
@@ -61,20 +73,9 @@
   opacity: 1;
 }
 
-.place__details {
-  display: flex;
-  flex-direction: column;
-  /* text-align: center; */
-}
-
 .place__photos {
   display: flex;
   margin: 1rem auto;
-}
-
-.place__photos-small {
-  display: flex;
-  flex-direction: column;
 }
 
 .place__img {
@@ -107,20 +108,12 @@
   flex-direction: column;
 }
 
-.place__visit {
-  display: flex;
-}
-
 .visit-icon {
   margin: 0 0.5rem 0 0;
 }
 
 .visit-stats {
   padding: 0.5rem 0 0 0;
-}
-
-.place__save {
-  display: flex;
 }
 
 .save-icon {
@@ -131,6 +124,10 @@
   padding: 0.5rem 0 0 0;
 }
 
+.icon__buttons {
+  margin-top: 1rem;
+}
+
 .place__title {
   margin: 1rem;
 }
@@ -139,8 +136,12 @@
   margin: 0 0 1rem 1rem;
 }
 
+.place__photos-list {
+  margin: 0 auto;
+}
+
 .place__text {
-  border: solid black 1px;
+  border: solid rgb(0, 0, 0) 1px;
   width: 46rem;
   margin: 1rem auto;
 }
@@ -155,4 +156,24 @@
 
 .button {
   margin: 0.5rem 0 0 0;
+}
+
+.place__form {
+  padding: 1rem;
+}
+
+.place-form__title {
+  margin: 0 0 2rem 0.5rem;
+}
+
+.place-form__group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.place__photo {
+  object-fit: cover;
+  width: 15rem;
+  height: 15rem;
 }
